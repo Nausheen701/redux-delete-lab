@@ -12,13 +12,18 @@ class BandsContainer extends Component {
     )
   }
 }
-
+// Use BandsContainer to access the Redux store using the provided 
+// mapStateToProps method. Pass the bands obtained from the store 
+// into the Bands component.
 const mapStateToProps = (state) => {
   return {bands: state.bands}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {addBand: name => dispatch({type: "ADD_BAND", name: name})}
+  return {
+    addBand: name => dispatch({type: "ADD_BAND", name: name}),
+    delete: (bandText) => dispatch({ type: "DELETE_BAND", payload: bandText })
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BandsContainer); 
